@@ -1,0 +1,37 @@
+name: "Unit tests"
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  static-analysis-phpstan:
+    name: Unit tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version:
+          - 8.1
+          - 8.2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: ${{ matrix.php-version }}
+
+      - name: Install dependencies with composer
+        run: composer i --no-interaction --no-progress --no-suggest
+
+      - name: Run PHPUnit
+        run: ./vendor/bin/phpunit --testdox
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan
