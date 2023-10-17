@@ -2,9 +2,9 @@ name: "Unit tests"
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, 1.0 ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, 1.0 ]
 
 jobs:
   static-analysis-phpstan:
