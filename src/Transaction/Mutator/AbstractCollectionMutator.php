@@ -4,12 +4,17 @@ declare(strict_types=1);
 
 namespace BitWasp\Bitcoin\Transaction\Mutator;
 
-abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable
+abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable, \IteratorAggregate
 {
     /**
      * @var \SplFixedArray
      */
     protected $set;
+
+    /**
+     * @var \Iterator
+     */
+    protected $iterator;
 
     /**
      * @return array
@@ -28,6 +33,18 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     }
 
     /**
+     * @return \Iterator
+     */
+    public function getIterator(): \Iterator
+    {
+        if ($this->iterator === null) {
+            $this->iterator = version_compare(PHP_VERSION, '8.0.0', '<') ? $this->set : $this->set->getIterator();
+        }
+
+        return $this->iterator;
+    }
+
+    /**
      * @return int
      */
     public function count(): int
@@ -41,7 +58,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     #[\ReturnTypeWillChange]
     public function rewind()
     {
-        $this->set->rewind();
+        $this->getIterator()->rewind();
     }
 
     /**
@@ -50,7 +67,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     #[\ReturnTypeWillChange]
     public function current()
     {
-        return $this->set->current();
+        return $this->getIterator()->current();
     }
 
     /**
@@ -59,7 +76,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     #[\ReturnTypeWillChange]
     public function key()
     {
-        return $this->set->key();
+        return $this->getIterator()->key();
     }
 
     /**
@@ -68,7 +85,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     #[\ReturnTypeWillChange]
     public function next()
     {
-        $this->set->next();
+        $this->getIterator()->next();
     }
 
     /**
@@ -77,7 +94,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     #[\ReturnTypeWillChange]
     public function valid()
     {
-        return $this->set->valid();
+        return $this->getIterator()->valid();
     }
 
     /**

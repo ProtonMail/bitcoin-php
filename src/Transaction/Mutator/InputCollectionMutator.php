@@ -28,7 +28,7 @@ class InputCollectionMutator extends AbstractCollectionMutator
      */
     public function current(): InputMutator
     {
-        return $this->set->current();
+        return $this->getIterator()->current();
     }
 
     /**

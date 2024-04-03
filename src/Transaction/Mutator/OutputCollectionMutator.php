@@ -26,7 +26,7 @@ class OutputCollectionMutator extends AbstractCollectionMutator
      */
     public function current(): OutputMutator
     {
-        return $this->set->current();
+        return $this->getIterator()->current();
     }
 
     /**
