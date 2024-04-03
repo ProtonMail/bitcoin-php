@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace BitWasp\Bitcoin\Transaction\Mutator;
 
-abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable, \IteratorAggregate
+abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Countable
 {
     /**
      * @var \SplFixedArray
@@ -35,7 +35,7 @@ abstract class AbstractCollectionMutator implements \Iterator, \ArrayAccess, \Co
     /**
      * @return \Iterator
      */
-    public function getIterator(): \Iterator
+    protected function getIterator(): \Iterator
     {
         if ($this->iterator === null) {
             $this->iterator = version_compare(PHP_VERSION, '8.0.0', '<') ? $this->set : $this->set->getIterator();
