@@ -27,7 +27,7 @@ class EcAdapterFactory
      * @param int|null $flags
      * @return resource
      */
-    public static function getSecp256k1Context(int $flags = null)
+    public static function getSecp256k1Context(?int $flags = null)
     {
         if (!extension_loaded('secp256k1')) {
             throw new \RuntimeException('Secp256k1 not installed');

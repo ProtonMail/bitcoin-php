@@ -31,7 +31,7 @@ class P2shScript extends Script
      * @param Opcodes|null $opcodes
      * @throws P2shScriptException
      */
-    public function __construct(ScriptInterface $script, Opcodes $opcodes = null)
+    public function __construct(ScriptInterface $script, ?Opcodes $opcodes = null)
     {
         if ($script instanceof WitnessScript) {
             $script = $script->getOutputScript();

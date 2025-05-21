@@ -40,7 +40,7 @@ class TransactionInputSerializer
      * @param OutPointSerializerInterface $outPointSerializer
      * @param Opcodes|null $opcodes
      */
-    public function __construct(OutPointSerializerInterface $outPointSerializer, Opcodes $opcodes = null)
+    public function __construct(OutPointSerializerInterface $outPointSerializer, ?Opcodes $opcodes = null)
     {
         $this->outpointSerializer = $outPointSerializer;
         $this->varstring = Types::varstring();

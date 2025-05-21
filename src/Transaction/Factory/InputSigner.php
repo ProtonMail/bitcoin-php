@@ -166,8 +166,8 @@ class InputSigner implements InputSignerInterface
         TransactionOutputInterface $txOut,
         SignData $signData,
         CheckerBase $checker,
-        TransactionSignatureSerializer $sigSerializer = null,
-        PublicKeySerializerInterface $pubKeySerializer = null
+        ?TransactionSignatureSerializer $sigSerializer = null,
+        ?PublicKeySerializerInterface $pubKeySerializer = null
     ) {
         $this->ecAdapter = $ecAdapter;
         $this->tx = $tx;
@@ -1029,7 +1029,7 @@ class InputSigner implements InputSignerInterface
      * @param int $flags
      * @return bool
      */
-    public function verify(int $flags = null): bool
+    public function verify(?int $flags = null): bool
     {
         $consensus = ScriptFactory::consensus();
 

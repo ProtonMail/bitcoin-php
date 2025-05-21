@@ -247,7 +247,7 @@ class Checksig
      * @param PublicKeyInterface|null $key
      * @return $this
      */
-    public function setKey(int $idx, PublicKeyInterface $key = null)
+    public function setKey(int $idx, ?PublicKeyInterface $key = null)
     {
         if ($idx < 0 || $idx > $this->keyCount) {
             throw new \RuntimeException("Out of range index for public key");

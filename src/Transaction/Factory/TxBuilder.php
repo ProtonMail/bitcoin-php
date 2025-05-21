@@ -110,7 +110,7 @@ class TxBuilder
      * @param int $nSequence
      * @return $this
      */
-    public function input($hashPrevOut, int $nPrevOut, ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
+    public function input($hashPrevOut, int $nPrevOut, ?ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
     {
         if ($hashPrevOut instanceof BufferInterface) {
             if ($hashPrevOut->getSize() !== 32) {
@@ -221,7 +221,7 @@ class TxBuilder
      * @param int $nSequence
      * @return $this
      */
-    public function spendOutPoint(OutPointInterface $outpoint, ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
+    public function spendOutPoint(OutPointInterface $outpoint, ?ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
     {
         $this->inputs[] = new TransactionInput(
             $outpoint,
@@ -239,7 +239,7 @@ class TxBuilder
      * @param int $nSequence
      * @return $this
      */
-    public function spendOutputFrom(TransactionInterface $transaction, int $outputToSpend, ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
+    public function spendOutputFrom(TransactionInterface $transaction, int $outputToSpend, ?ScriptInterface $script = null, int $nSequence = TransactionInputInterface::SEQUENCE_FINAL)
     {
         // Check TransactionOutput exists in $tx
         $transaction->getOutput($outputToSpend);

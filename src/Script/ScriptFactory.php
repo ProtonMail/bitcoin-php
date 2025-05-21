@@ -39,7 +39,7 @@ class ScriptFactory
      * @param Math|null $math
      * @return ScriptInterface
      */
-    public static function fromBuffer(BufferInterface $buffer, Opcodes $opcodes = null, Math $math = null): ScriptInterface
+    public static function fromBuffer(BufferInterface $buffer, ?Opcodes $opcodes = null, ?Math $math = null): ScriptInterface
     {
         return self::create($buffer, $opcodes, $math)->getScript();
     }
@@ -50,7 +50,7 @@ class ScriptFactory
      * @param Math|null $math
      * @return ScriptCreator
      */
-    public static function create(BufferInterface $buffer = null, Opcodes $opcodes = null, Math $math = null): ScriptCreator
+    public static function create(?BufferInterface $buffer = null, ?Opcodes $opcodes = null, ?Math $math = null): ScriptCreator
     {
         return new ScriptCreator($math ?: Bitcoin::getMath(), $opcodes ?: new Opcodes(), $buffer);
     }
@@ -126,7 +126,7 @@ class ScriptFactory
      * @param EcAdapterInterface|null $ecAdapter
      * @return NativeConsensus
      */
-    public static function getNativeConsensus(EcAdapterInterface $ecAdapter = null): NativeConsensus
+    public static function getNativeConsensus(?EcAdapterInterface $ecAdapter = null): NativeConsensus
     {
         return new NativeConsensus($ecAdapter ?: Bitcoin::getEcAdapter());
     }
@@ -143,7 +143,7 @@ class ScriptFactory
      * @param EcAdapterInterface|null $ecAdapter
      * @return ConsensusInterface
      */
-    public static function consensus(EcAdapterInterface $ecAdapter = null): ConsensusInterface
+    public static function consensus(?EcAdapterInterface $ecAdapter = null): ConsensusInterface
     {
         if (extension_loaded('bitcoinconsensus')) {
             return self::getBitcoinConsensus();

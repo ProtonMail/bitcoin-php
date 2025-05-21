@@ -50,7 +50,7 @@ class Multisig
      * @param bool $allowVerify
      * @param PublicKeySerializerInterface|null $pubKeySerializer
      */
-    public function __construct(int $requiredSigs, array $keys, int $opcode, $allowVerify = false, PublicKeySerializerInterface $pubKeySerializer = null)
+    public function __construct(int $requiredSigs, array $keys, int $opcode, $allowVerify = false, ?PublicKeySerializerInterface $pubKeySerializer = null)
     {
         if ($opcode === Opcodes::OP_CHECKMULTISIG) {
             $verify = false;
@@ -92,7 +92,7 @@ class Multisig
      * @param bool $allowVerify
      * @return Multisig
      */
-    public static function fromDecodedScript(array $decoded, PublicKeySerializerInterface $pubKeySerializer = null, $allowVerify = false)
+    public static function fromDecodedScript(array $decoded, ?PublicKeySerializerInterface $pubKeySerializer = null, $allowVerify = false)
     {
         if (count($decoded) < 4) {
             throw new \InvalidArgumentException('Malformed multisig script');
@@ -128,7 +128,7 @@ class Multisig
      * @param bool $allowVerify
      * @return Multisig
      */
-    public static function fromScript(ScriptInterface $script, PublicKeySerializerInterface $pubKeySerializer = null, bool $allowVerify = false)
+    public static function fromScript(ScriptInterface $script, ?PublicKeySerializerInterface $pubKeySerializer = null, bool $allowVerify = false)
     {
         return static::fromDecodedScript($script->getScriptParser()->decode(), $pubKeySerializer, $allowVerify);
     }

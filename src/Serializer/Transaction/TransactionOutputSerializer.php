@@ -34,7 +34,7 @@ class TransactionOutputSerializer
      * TransactionOutputSerializer constructor.
      * @param Opcodes|null $opcodes
      */
-    public function __construct(Opcodes $opcodes = null)
+    public function __construct(?Opcodes $opcodes = null)
     {
         $this->uint64le = Types::uint64le();
         $this->varstring = Types::varstring();

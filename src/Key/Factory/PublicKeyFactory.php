@@ -23,7 +23,7 @@ class PublicKeyFactory
      * PublicKeyFactory constructor.
      * @param EcAdapterInterface $ecAdapter
      */
-    public function __construct(EcAdapterInterface $ecAdapter = null)
+    public function __construct(?EcAdapterInterface $ecAdapter = null)
     {
         $ecAdapter = $ecAdapter ?: Bitcoin::getEcAdapter();
         $this->serializer = EcSerializer::getSerializer(PublicKeySerializerInterface::class, true, $ecAdapter);

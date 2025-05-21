@@ -53,7 +53,7 @@ class ExtendedKeySerializer
      * @param EcAdapterInterface $ecAdapter
      * @param GlobalPrefixConfig|null $config
      */
-    public function __construct(EcAdapterInterface $ecAdapter, GlobalPrefixConfig $config = null)
+    public function __construct(EcAdapterInterface $ecAdapter, ?GlobalPrefixConfig $config = null)
     {
         $this->privateKeySerializer = EcSerializer::getSerializer(PrivateKeySerializerInterface::class, true, $ecAdapter);
         $this->publicKeySerializer = EcSerializer::getSerializer(PublicKeySerializerInterface::class, true, $ecAdapter);

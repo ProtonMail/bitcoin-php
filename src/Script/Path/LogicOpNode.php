@@ -26,7 +26,7 @@ class LogicOpNode
      * @param LogicOpNode|null $parent
      * @param bool|null $value
      */
-    public function __construct(LogicOpNode $parent = null, bool $value = null)
+    public function __construct(?LogicOpNode $parent = null, ?bool $value = null)
     {
         $this->parent = $parent;
         $this->value = $value;

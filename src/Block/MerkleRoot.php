@@ -45,7 +45,7 @@ class MerkleRoot
      * @return BufferInterface
      * @throws MerkleTreeEmpty
      */
-    public function calculateHash(callable $hashFunction = null): BufferInterface
+    public function calculateHash(?callable $hashFunction = null): BufferInterface
     {
         if ($this->lastHash instanceof BufferInterface) {
             return $this->lastHash;

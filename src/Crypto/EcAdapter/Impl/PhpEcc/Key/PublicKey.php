@@ -49,7 +49,7 @@ class PublicKey extends Key implements PublicKeyInterface, \Mdanter\Ecc\Crypto\K
         EcAdapter $ecAdapter,
         PointInterface $point,
         bool $compressed = false,
-        string $prefix = null
+        ?string $prefix = null
     ) {
         $this->ecAdapter = $ecAdapter;
         $this->point = $point;

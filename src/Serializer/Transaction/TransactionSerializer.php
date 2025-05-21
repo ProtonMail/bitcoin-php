@@ -46,7 +46,7 @@ class TransactionSerializer implements TransactionSerializerInterface
      */
     protected $witnessSerializer;
 
-    public function __construct(TransactionInputSerializer $inputSerializer = null, TransactionOutputSerializer $outputSerializer = null, ScriptWitnessSerializer $witnessSerializer = null)
+    public function __construct(?TransactionInputSerializer $inputSerializer = null, ?TransactionOutputSerializer $outputSerializer = null, ?ScriptWitnessSerializer $witnessSerializer = null)
     {
         $this->int32le = Types::int32le();
         $this->uint32le = Types::uint32le();

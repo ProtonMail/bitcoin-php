@@ -34,7 +34,7 @@ class ScriptCreator
      * @param Opcodes $opcodes
      * @param BufferInterface|null $buffer
      */
-    public function __construct(Math $math, Opcodes $opcodes, BufferInterface $buffer = null)
+    public function __construct(Math $math, Opcodes $opcodes, ?BufferInterface $buffer = null)
     {
         if ($buffer !== null) {
             $this->script = $buffer->getBinary();

@@ -48,7 +48,7 @@ class Bip39Mnemonic implements MnemonicInterface
      * @return string
      * @throws \BitWasp\Bitcoin\Exceptions\RandomBytesFailure
      */
-    public function create(int $entropySize = null): string
+    public function create(?int $entropySize = null): string
     {
         if (null === $entropySize) {
             $entropySize = self::DEFAULT_ENTROPY_BYTE_LEN * 8;

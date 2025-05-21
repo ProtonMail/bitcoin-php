@@ -19,7 +19,7 @@ class TransactionSignatureFactory
      * @return TransactionSignatureInterface
      * @throws \Exception
      */
-    public static function fromHex(string $string, EcAdapterInterface $ecAdapter = null): TransactionSignatureInterface
+    public static function fromHex(string $string, ?EcAdapterInterface $ecAdapter = null): TransactionSignatureInterface
     {
         return self::fromBuffer(Buffer::hex($string), $ecAdapter);
     }
@@ -30,7 +30,7 @@ class TransactionSignatureFactory
      * @return TransactionSignatureInterface
      * @throws \Exception
      */
-    public static function fromBuffer(BufferInterface $buffer, EcAdapterInterface $ecAdapter = null): TransactionSignatureInterface
+    public static function fromBuffer(BufferInterface $buffer, ?EcAdapterInterface $ecAdapter = null): TransactionSignatureInterface
     {
         $serializer = new TransactionSignatureSerializer(
             EcSerializer::getSerializer(DerSignatureSerializerInterface::class, true, $ecAdapter)

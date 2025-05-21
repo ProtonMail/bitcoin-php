@@ -93,7 +93,7 @@ interface InputSignerInterface
      * @param int $flags
      * @return bool
      */
-    public function verify(int $flags = null): bool;
+    public function verify(?int $flags = null): bool;
 
     /**
      * Produces a SigValues instance containing the scriptSig & script witness

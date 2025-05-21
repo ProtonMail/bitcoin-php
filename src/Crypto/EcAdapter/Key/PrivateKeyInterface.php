@@ -25,14 +25,14 @@ interface PrivateKeyInterface extends KeyInterface
      * @param RbgInterface $rbg
      * @return SignatureInterface
      */
-    public function sign(BufferInterface $msg32, RbgInterface $rbg = null);
+    public function sign(BufferInterface $msg32, ?RbgInterface $rbg = null);
 
     /**
      * @param BufferInterface $msg32
      * @param RbgInterface|null $rbgInterface
      * @return CompactSignature
      */
-    public function signCompact(BufferInterface $msg32, RbgInterface $rbgInterface = null);
+    public function signCompact(BufferInterface $msg32, ?RbgInterface $rbgInterface = null);
 
     /**
      * Return the public key.
@@ -48,5 +48,5 @@ interface PrivateKeyInterface extends KeyInterface
      * @param NetworkInterface $network
      * @return string
      */
-    public function toWif(NetworkInterface $network = null);
+    public function toWif(?NetworkInterface $network = null);
 }

@@ -95,7 +95,7 @@ interface InterpreterInterface
      * @param ScriptWitnessInterface|null $witness
      * @return bool
      */
-    public function verify(ScriptInterface $scriptSig, ScriptInterface $scriptPubKey, int $flags, CheckerBase $checker, ScriptWitnessInterface $witness = null);
+    public function verify(ScriptInterface $scriptSig, ScriptInterface $scriptPubKey, int $flags, CheckerBase $checker, ?ScriptWitnessInterface $witness = null);
 
     /**
      * @param ScriptInterface $script

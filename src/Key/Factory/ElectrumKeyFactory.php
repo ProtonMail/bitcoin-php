@@ -29,7 +29,7 @@ class ElectrumKeyFactory
      * ElectrumKeyFactory constructor.
      * @param EcAdapterInterface|null $ecAdapter
      */
-    public function __construct(EcAdapterInterface $ecAdapter = null)
+    public function __construct(?EcAdapterInterface $ecAdapter = null)
     {
         $this->adapter = $ecAdapter ?: Bitcoin::getEcAdapter();
         $this->privateFactory = new PrivateKeyFactory($ecAdapter);
@@ -41,7 +41,7 @@ class ElectrumKeyFactory
      * @return ElectrumKey
      * @throws \Exception
      */
-    public function fromMnemonic(string $mnemonic, ElectrumWordListInterface $wordList = null): ElectrumKey
+    public function fromMnemonic(string $mnemonic, ?ElectrumWordListInterface $wordList = null): ElectrumKey
     {
         $mnemonicConverter = MnemonicFactory::electrum($wordList, $this->adapter);
         $entropy = $mnemonicConverter->mnemonicToEntropy($mnemonic);

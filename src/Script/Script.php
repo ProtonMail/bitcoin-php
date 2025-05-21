@@ -41,7 +41,7 @@ class Script extends Serializable implements ScriptInterface
      * @param BufferInterface $script
      * @param Opcodes|null $opCodes
      */
-    public function __construct(BufferInterface $script = null, Opcodes $opCodes = null)
+    public function __construct(?BufferInterface $script = null, ?Opcodes $opCodes = null)
     {
         $this->script = $script instanceof BufferInterface ? $script->getBinary() : '';
         $this->opCodes = $opCodes ?: new Opcodes();
@@ -226,7 +226,7 @@ class Script extends Serializable implements ScriptInterface
      * @param array|null $ops
      * @return bool
      */
-    public function isPushOnly(array&$ops = null): bool
+    public function isPushOnly(?array&$ops = null): bool
     {
         $decoded = $this->getScriptParser()->decode();
         $data = [];

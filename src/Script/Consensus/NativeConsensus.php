@@ -20,7 +20,7 @@ class NativeConsensus implements ConsensusInterface
      * NativeConsensus constructor.
      * @param EcAdapterInterface $ecAdapter
      */
-    public function __construct(EcAdapterInterface $ecAdapter = null)
+    public function __construct(?EcAdapterInterface $ecAdapter = null)
     {
         $this->adapter = $ecAdapter ?: Bitcoin::getEcAdapter();
     }

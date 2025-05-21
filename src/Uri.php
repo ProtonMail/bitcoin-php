@@ -52,7 +52,7 @@ class Uri
      * @param AddressInterface|null $address
      * @param int $convention
      */
-    public function __construct(AddressInterface $address = null, int $convention = self::BIP0021)
+    public function __construct(?AddressInterface $address = null, int $convention = self::BIP0021)
     {
         if ($convention === self::BIP0021) {
             if ($address === null) {
@@ -123,7 +123,7 @@ class Uri
      * @param NetworkInterface|null $network
      * @return string
      */
-    public function uri(NetworkInterface $network = null): string
+    public function uri(?NetworkInterface $network = null): string
     {
         if ($this->rule === self::BIP0072) {
             $address = $this->bip72Address === null ? '' : $this->bip72Address->getAddress($network);

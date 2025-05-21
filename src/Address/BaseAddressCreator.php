@@ -14,7 +14,7 @@ abstract class BaseAddressCreator
      * @param NetworkInterface|null $network
      * @return Address
      */
-    abstract public function fromString(string $strAddress, NetworkInterface $network = null): Address;
+    abstract public function fromString(string $strAddress, ?NetworkInterface $network = null): Address;
 
     /**
      * @param ScriptInterface $script

@@ -46,8 +46,8 @@ class V1Hasher extends SigHash
     public function __construct(
         TransactionInterface $transaction,
         int $amount,
-        OutPointSerializerInterface $outpointSerializer = null,
-        TransactionOutputSerializer $outputSerializer = null
+        ?OutPointSerializerInterface $outpointSerializer = null,
+        ?TransactionOutputSerializer $outputSerializer = null
     ) {
         $this->amount = $amount;
         $this->outputSerializer = $outputSerializer ?: new TransactionOutputSerializer();

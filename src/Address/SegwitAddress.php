@@ -31,7 +31,7 @@ class SegwitAddress extends Address implements Bech32AddressInterface
      * @param NetworkInterface|null $network
      * @return string
      */
-    public function getHRP(NetworkInterface $network = null): string
+    public function getHRP(?NetworkInterface $network = null): string
     {
         $network = $network ?: Bitcoin::getNetwork();
         return $network->getSegwitBech32Prefix();
@@ -57,7 +57,7 @@ class SegwitAddress extends Address implements Bech32AddressInterface
      * @param NetworkInterface|null $network
      * @return string
      */
-    public function getAddress(NetworkInterface $network = null): string
+    public function getAddress(?NetworkInterface $network = null): string
     {
         $network = $network ?: Bitcoin::getNetwork();
 

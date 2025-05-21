@@ -29,7 +29,7 @@ class ScriptHashAddress extends Base58Address
      * @param NetworkInterface $network
      * @return string
      */
-    public function getPrefixByte(NetworkInterface $network = null): string
+    public function getPrefixByte(?NetworkInterface $network = null): string
     {
         $network = $network ?: Bitcoin::getNetwork();
         return pack("H*", $network->getP2shByte());

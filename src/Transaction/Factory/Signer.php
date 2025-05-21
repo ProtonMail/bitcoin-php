@@ -71,7 +71,7 @@ class Signer
      * @param TransactionInterface $tx
      * @param EcAdapterInterface $ecAdapter
      */
-    public function __construct(TransactionInterface $tx, EcAdapterInterface $ecAdapter = null)
+    public function __construct(TransactionInterface $tx, ?EcAdapterInterface $ecAdapter = null)
     {
         $this->tx = $tx;
         $this->ecAdapter = $ecAdapter ?: Bitcoin::getEcAdapter();
@@ -133,7 +133,7 @@ class Signer
      * @param int $sigHashType
      * @return $this
      */
-    public function sign(int $nIn, PrivateKeyInterface $key, TransactionOutputInterface $txOut, SignData $signData = null, int $sigHashType = SigHash::ALL)
+    public function sign(int $nIn, PrivateKeyInterface $key, TransactionOutputInterface $txOut, ?SignData $signData = null, int $sigHashType = SigHash::ALL)
     {
         $input = $this->input($nIn, $txOut, $signData);
         foreach ($input->getSteps() as $idx => $step) {
@@ -149,7 +149,7 @@ class Signer
      * @param SignData|null $signData
      * @return InputSignerInterface
      */
-    public function input(int $nIn, TransactionOutputInterface $txOut, SignData $signData = null): InputSignerInterface
+    public function input(int $nIn, TransactionOutputInterface $txOut, ?SignData $signData = null): InputSignerInterface
     {
         if (null === $signData) {
             $signData = new SignData();

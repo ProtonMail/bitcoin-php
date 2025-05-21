@@ -30,7 +30,7 @@ interface KeyInterface extends SerializableInterface
      * @param PublicKeySerializerInterface|null $serializer
      * @return BufferInterface
      */
-    public function getPubKeyHash(PublicKeySerializerInterface $serializer = null): BufferInterface;
+    public function getPubKeyHash(?PublicKeySerializerInterface $serializer = null): BufferInterface;
 
     /**
      * @param \GMP $offset

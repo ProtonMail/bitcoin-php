@@ -72,7 +72,7 @@ abstract class CheckerBase
      * @param TransactionSignatureSerializer|null $sigSerializer
      * @param PublicKeySerializerInterface|null $pubKeySerializer
      */
-    public function __construct(EcAdapterInterface $ecAdapter, TransactionInterface $transaction, int $nInput, int $amount, TransactionSignatureSerializer $sigSerializer = null, PublicKeySerializerInterface $pubKeySerializer = null)
+    public function __construct(EcAdapterInterface $ecAdapter, TransactionInterface $transaction, int $nInput, int $amount, ?TransactionSignatureSerializer $sigSerializer = null, ?PublicKeySerializerInterface $pubKeySerializer = null)
     {
         $this->sigSerializer = $sigSerializer ?: new TransactionSignatureSerializer(EcSerializer::getSerializer(DerSignatureSerializerInterface::class, true, $ecAdapter));
         $this->pubKeySerializer = $pubKeySerializer ?: EcSerializer::getSerializer(PublicKeySerializerInterface::class, true, $ecAdapter);

@@ -26,7 +26,7 @@ class BlockFactory
      * @throws \BitWasp\Buffertools\Exceptions\ParserOutOfRange
      * @throws \Exception
      */
-    public static function fromHex(string $string, Math $math = null): BlockInterface
+    public static function fromHex(string $string, ?Math $math = null): BlockInterface
     {
         return self::fromBuffer(Buffer::hex($string), $math);
     }
@@ -37,7 +37,7 @@ class BlockFactory
      * @return BlockInterface
      * @throws \BitWasp\Buffertools\Exceptions\ParserOutOfRange
      */
-    public static function fromBuffer(BufferInterface $buffer, Math $math = null): BlockInterface
+    public static function fromBuffer(BufferInterface $buffer, ?Math $math = null): BlockInterface
     {
         $opcodes = new Opcodes();
         $serializer = new BlockSerializer(

@@ -101,7 +101,7 @@ class AddressCreator extends BaseAddressCreator
      * @return Address
      * @throws UnrecognizedAddressException
      */
-    public function fromString(string $strAddress, NetworkInterface $network = null): Address
+    public function fromString(string $strAddress, ?NetworkInterface $network = null): Address
     {
         $network = $network ?: Bitcoin::getNetwork();
 

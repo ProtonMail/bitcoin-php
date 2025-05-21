@@ -16,7 +16,7 @@ class Slip132
      */
     private $helper;
 
-    public function __construct(KeyToScriptHelper $helper = null)
+    public function __construct(?KeyToScriptHelper $helper = null)
     {
         $this->helper = $helper ?: new KeyToScriptHelper(Bitcoin::getEcAdapter());
     }

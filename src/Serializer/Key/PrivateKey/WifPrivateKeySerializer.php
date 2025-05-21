@@ -55,7 +55,7 @@ class WifPrivateKeySerializer
      * @throws InvalidPrivateKey
      * @throws \Exception
      */
-    public function parse(string $wif, NetworkInterface $network = null): PrivateKeyInterface
+    public function parse(string $wif, ?NetworkInterface $network = null): PrivateKeyInterface
     {
         $network = $network ?: Bitcoin::getNetwork();
         $data = Base58::decodeCheck($wif);

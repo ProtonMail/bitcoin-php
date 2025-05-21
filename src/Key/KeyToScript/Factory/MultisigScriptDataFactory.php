@@ -28,7 +28,7 @@ class MultisigScriptDataFactory extends KeyToScriptDataFactory
      */
     private $sortKeys;
 
-    public function __construct(int $numSigners, int $numKeys, bool $sortKeys, PublicKeySerializerInterface $pubKeySerializer = null)
+    public function __construct(int $numSigners, int $numKeys, bool $sortKeys, ?PublicKeySerializerInterface $pubKeySerializer = null)
     {
         $this->numSigners = $numSigners;
         $this->numKeys = $numKeys;

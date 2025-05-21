@@ -36,7 +36,7 @@ class WitnessScript extends Script
      * @param Opcodes|null $opcodes
      * @throws WitnessScriptException
      */
-    public function __construct(ScriptInterface $script, Opcodes $opcodes = null)
+    public function __construct(ScriptInterface $script, ?Opcodes $opcodes = null)
     {
         if ($script instanceof self) {
             throw new WitnessScriptException("Cannot nest V0 P2WSH scripts.");

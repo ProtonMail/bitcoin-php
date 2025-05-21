@@ -25,7 +25,7 @@ class MessageSigner
     /**
      * @param EcAdapterInterface $ecAdapter
      */
-    public function __construct(EcAdapterInterface $ecAdapter = null)
+    public function __construct(?EcAdapterInterface $ecAdapter = null)
     {
         $this->ecAdapter = $ecAdapter ?: Bitcoin::getEcAdapter();
     }
@@ -64,7 +64,7 @@ class MessageSigner
      * @param NetworkInterface|null $network
      * @return bool
      */
-    public function verify(SignedMessage $signedMessage, PayToPubKeyHashAddress $address, NetworkInterface $network = null): bool
+    public function verify(SignedMessage $signedMessage, PayToPubKeyHashAddress $address, ?NetworkInterface $network = null): bool
     {
         $network = $network ?: Bitcoin::getNetwork();
         $hash = $this->calculateMessageHash($network, $signedMessage->getMessage());
@@ -83,7 +83,7 @@ class MessageSigner
      * @param NetworkInterface|null $network
      * @return SignedMessage
      */
-    public function sign(string $message, PrivateKeyInterface $privateKey, NetworkInterface $network = null): SignedMessage
+    public function sign(string $message, PrivateKeyInterface $privateKey, ?NetworkInterface $network = null): SignedMessage
     {
         $network = $network ?: Bitcoin::getNetwork();
         $hash = $this->calculateMessageHash($network, $message);

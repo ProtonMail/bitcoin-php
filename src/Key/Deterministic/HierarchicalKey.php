@@ -345,7 +345,7 @@ class HierarchicalKey
      * @param NetworkInterface $network
      * @return string
      */
-    public function toExtendedKey(NetworkInterface $network = null): string
+    public function toExtendedKey(?NetworkInterface $network = null): string
     {
         $network = $network ?: Bitcoin::getNetwork();
 
@@ -361,7 +361,7 @@ class HierarchicalKey
      * @param NetworkInterface $network
      * @return string
      */
-    public function toExtendedPrivateKey(NetworkInterface $network = null): string
+    public function toExtendedPrivateKey(?NetworkInterface $network = null): string
     {
         if (!$this->isPrivate()) {
             throw new \LogicException('Cannot create extended private key from public');
@@ -376,7 +376,7 @@ class HierarchicalKey
      * @param NetworkInterface $network
      * @return string
      */
-    public function toExtendedPublicKey(NetworkInterface $network = null): string
+    public function toExtendedPublicKey(?NetworkInterface $network = null): string
     {
         return $this->withoutPrivateKey()->toExtendedKey($network);
     }

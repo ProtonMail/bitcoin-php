@@ -43,7 +43,7 @@ class HierarchicalKeyFactory
      * @param Base58ExtendedKeySerializer|null $serializer
      * @throws \Exception
      */
-    public function __construct(EcAdapterInterface $ecAdapter = null, Base58ExtendedKeySerializer $serializer = null)
+    public function __construct(?EcAdapterInterface $ecAdapter = null, ?Base58ExtendedKeySerializer $serializer = null)
     {
         $this->adapter = $ecAdapter ?: Bitcoin::getEcAdapter();
         $this->privFactory = new PrivateKeyFactory($this->adapter);
@@ -59,7 +59,7 @@ class HierarchicalKeyFactory
      * @throws \BitWasp\Bitcoin\Exceptions\RandomBytesFailure
      * @throws \Exception
      */
-    public function generateMasterKey(Random $random, ScriptDataFactory $scriptDataFactory = null): HierarchicalKey
+    public function generateMasterKey(Random $random, ?ScriptDataFactory $scriptDataFactory = null): HierarchicalKey
     {
         return $this->fromEntropy(
             $random->bytes(64),
@@ -73,7 +73,7 @@ class HierarchicalKeyFactory
      * @return HierarchicalKey
      * @throws \Exception
      */
-    public function fromEntropy(BufferInterface $entropy, ScriptDataFactory $scriptFactory = null): HierarchicalKey
+    public function fromEntropy(BufferInterface $entropy, ?ScriptDataFactory $scriptFactory = null): HierarchicalKey
     {
         $seed = Hash::hmac('sha512', $entropy, new Buffer('Bitcoin seed'));
         $privSecret = $seed->slice(0, 32);
@@ -89,7 +89,7 @@ class HierarchicalKeyFactory
      * @throws \BitWasp\Bitcoin\Exceptions\Base58ChecksumFailure
      * @throws \BitWasp\Buffertools\Exceptions\ParserOutOfRange
      */
-    public function fromExtended(string $extendedKey, NetworkInterface $network = null): HierarchicalKey
+    public function fromExtended(string $extendedKey, ?NetworkInterface $network = null): HierarchicalKey
     {
         return $this->serializer->parse($network ?: Bitcoin::getNetwork(), $extendedKey);
     }

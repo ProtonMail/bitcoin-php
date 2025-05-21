@@ -42,7 +42,7 @@ class Number extends Serializable
      * @param Math|null $math
      * @return self
      */
-    public static function int($number, Math $math = null)
+    public static function int($number, ?Math $math = null)
     {
         return new self(
             $number,
@@ -55,7 +55,7 @@ class Number extends Serializable
      * @param Math|null $math
      * @return self
      */
-    public static function gmp(\GMP $number, Math $math = null)
+    public static function gmp(\GMP $number, ?Math $math = null)
     {
         return new self(
             gmp_strval($number, 10),
@@ -70,7 +70,7 @@ class Number extends Serializable
      * @param Math|null $math
      * @return self
      */
-    public static function buffer(BufferInterface $vch, $fRequireMinimal, $maxNumSize = self::MAX_NUM_SIZE, Math $math = null)
+    public static function buffer(BufferInterface $vch, $fRequireMinimal, $maxNumSize = self::MAX_NUM_SIZE, ?Math $math = null)
     {
         $size = $vch->getSize();
         if ($size > $maxNumSize) {

@@ -28,7 +28,7 @@ abstract class Key extends Serializable implements KeyInterface
      * @param PublicKeySerializerInterface|null $serializer
      * @return \BitWasp\Buffertools\BufferInterface
      */
-    public function getPubKeyHash(PublicKeySerializerInterface $serializer = null): BufferInterface
+    public function getPubKeyHash(?PublicKeySerializerInterface $serializer = null): BufferInterface
     {
         if ($this instanceof PrivateKeyInterface) {
             $publicKey = $this->getPublicKey();
